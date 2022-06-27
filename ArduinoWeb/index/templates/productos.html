@@ -1,0 +1,53 @@
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <title>Prueba de Arduino</title>
+        {% load static %}
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'css/slate.css' %}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{% static 'css/master.css' %}" rel="stylesheet">
+    
+    </head>
+    <body>
+        <nav class="navbar navbar-light bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" style="color: white;">Productos</a>
+              <a class="navbar-brand" style="color: white;">Categorias</a>
+              <a class="navbar-brand" style="color: white;">Paises</a>
+              <a class="navbar-brand" style="color: white;">¿Quienes somos?</a>
+              <button class="btn btn-outline-primary" type="submit"  style="color: white;">Ingresar</button>
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+        <div class="container py-5">
+            <div class="row">
+                {% for prod in product_list %}
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                  <img class="card-img-top" src="{{ prod.img_delante }}" width="100px">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a>{{ prod.nombre }}</a>
+                    </h4>
+                    <h5>s/. {{ prod.precio }}</h5>
+                    <p class="card-text">Stock: {{ prod.stock }}</p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                  </div>
+                  <a href="producto/{{ prod.id }}/"><button class="btn btn-primary mb-2 w-100">Comprar</button></a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+        </div>
+    </body>
+
+</html>

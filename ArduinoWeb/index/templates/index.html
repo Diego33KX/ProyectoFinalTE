@@ -1,0 +1,65 @@
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Prueba de Arduino</title>
+    {% load static %}
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/slate.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/master.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-light bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color: white;">Productos</a>
+          <a class="navbar-brand" style="color: white;">Categorias</a>
+          <a class="navbar-brand" style="color: white;">Paises</a>
+          <a class="navbar-brand" style="color: white;">¿Quienes somos?</a>
+          <button class="btn btn-outline-primary" type="submit"  style="color: white;">Ingresar</button>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    <div class="py-5 container col-md-6" >
+        <H1 class="text-center py-3">Realizar Compra</H1>
+        <form method="POST" action="/registrarVenta/">{% csrf_token %}
+            <div class="container">
+                <h3>Producto</h3>
+                <input class="form-control" type="text" value="{{ producto.nombre }}" readonly name="producto">
+                <br>
+                <h3>Precio</h3>
+                <input class="form-control" type="text" value="{{ producto.precio }}" readonly name="precio">
+                <br>
+                <h3>Cantidad</h3>
+                <input class="form-control" type="number" value="1" name="cantidad" min="1" max="10">
+                <br>
+                <h3>Cliente</h3>
+                <input class="form-control" type="text" value="" name="cliente">
+                <br>
+                <input type="hidden" value="2" name="id">
+                <button class="btn btn-info mb-2 w-100" type="submit">Comprar</button> <br>
+            </div>
+        </form>
+        <!--<ul>
+           <li><h4 style="color:blue">Producto: {{ producto.nombre }}</h4></li>
+           <li><h4>Precio: s/. {{ producto.precio }}</h4></li>
+           <li><h4>Stock: {{producto.stock}}</h4></li>
+           <li><h4>Fecha de publicacion: {{producto.pub_date}}</h4></li>
+           <li><h4>Categoria: {{producto.categoria.nombre}}</h4></li>
+        </ul>-->
+     </div>
+    <!-- Custom Scripts -->
+    <script src="{% static 'js/master.js' %}"></script>
+
+</body>
+
+</html>
